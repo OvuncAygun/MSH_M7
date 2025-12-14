@@ -1,17 +1,33 @@
-#pragma once
+// include/commands/AddDeviceCommand.h
+#ifndef ADDDEVICECOMMAND_H
+#define ADDDEVICECOMMAND_H
 
-#include "ICommand.h"
-#include "DeviceType.h"
+#include "../Command.h" // Artýk Command.h'den kalýtým alýyoruz
 
-#include <string>
-#include <vector>
-
-class AddDeviceCommand : public ICommand {
-public:
-    virtual ~AddDeviceCommand() = 0;
-
+class AddDeviceCommand : public Command {
+private:
     DeviceType deviceType;
-    std::string name;
-    std::vector<std::string> config;
     int count;
+public:
+    // Command kurucusunu çaðýrýyoruz
+    AddDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
+        DeviceType type, int c)
+        : Command(dm, mm, sm, l, secM), deviceType(type), count(c) {
+    }
+
+    virtual ~AddDeviceCommand() {}
+
+    virtual void execute() {
+        printf("Executing AddDevice: Type %d, Count %d\n", deviceType, count);
+
+        // IDeviceManager::addDevice'a sadece 2 argüman gönderiyoruz (C2660 hatasýnýn çözümü)
+        deviceManager->addDevice(deviceType, count);
+
+        // Loglama için C++98 uyumlu IntToString kullanýyoruz (E0415/E0165 hatasýnýn çözümü)
+        std::string logDetails = "Type " + IntToString(deviceType) + ", Count " + IntToString(count);
+        logger->writeLog("AddDevice", logDetails);
+    }
 };
+#endif // ADDDEVICECOMMAND_H
+
+// NOT: Tüm diðer komut dosyalarýnýzý (PowerOn, RemoveDevice, vb.) bu formata göre güncelleyin.

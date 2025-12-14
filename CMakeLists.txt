@@ -36,7 +36,7 @@ target_sources(MSH_M7
         ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/PoweroffDeviceCommand.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/AddDeviceCommand.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/ArmSecurityCommand.h
-)
+ "include/Command.h" "include/Utility.h")
 
 include(CTest)
 enable_testing()

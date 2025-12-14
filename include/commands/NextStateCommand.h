@@ -1,11 +1,20 @@
-#pragma once
+#ifndef NEXTSTATECOMMAND_H
+#define NEXTSTATECOMMAND_H
 
-#include "ICommand.h"
-#include "IState.h"
+#include "../Command.h"
 
-class NextStateCommand : public ICommand {
+class NextStateCommand : public Command {
 public:
-    virtual ~NextStateCommand() = 0;
+    NextStateCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
+        : Command(dm, mm, sm, l, secM) {
+    }
 
-    IState* state;
+    virtual ~NextStateCommand() {}
+
+    virtual void execute() {
+        printf("Executing NextStateCommand: Restoring next state...\n");
+        stateManager->restoreNext();
+        logger->writeLog("StateRestore", "Restored Next State");
+    }
 };
+#endif // NEXTSTATECOMMAND_H

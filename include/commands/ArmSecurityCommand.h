@@ -1,10 +1,22 @@
-#pragma once
+#ifndef ARMSECURITYCOMMAND_H
+#define ARMSECURITYCOMMAND_H
 
-#include "ICommand.h"
+#include "../Command.h"
 
-class ArmSecurityCommand : public ICommand {
+class ArmSecurityCommand : public Command {
 public:
-    virtual ~ArmSecurityCommand() = 0;
+    ArmSecurityCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
+        : Command(dm, mm, sm, l, secM) {
+    }
 
-    bool isSecurityArmed;
+    virtual ~ArmSecurityCommand() {}
+
+    virtual void execute() {
+        // Bu komut, M6'daki SecurityManager'ý aktifleþtirir.
+        printf("Executing ArmSecurityCommand: Security system activated.\n");
+     //   securityManager->armSystem(); // Varsayýmsal metod but bu hata verdi deðiþtirdim.
+        securityManager->setIsSystemArmed(true);
+        logger->writeLog("Security", "System Armed.");
+    }
 };
+#endif // ARMSECURITYCOMMAND_H

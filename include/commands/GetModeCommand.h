@@ -1,11 +1,20 @@
-#pragma once
+#ifndef GETMODECOMMAND_H
+#define GETMODECOMMAND_H
 
-#include "ICommand.h"
-#include "IModeStrategy.h"
+#include "../Command.h"
 
-class GetModeCommand : public ICommand {
+class GetModeCommand : public Command {
 public:
-    virtual ~GetModeCommand() = 0;
+    GetModeCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
+        : Command(dm, mm, sm, l, secM) {
+    }
 
-    IModeStrategy* mode;
+    virtual ~GetModeCommand() {}
+
+    virtual void execute() {
+        std::string modeName = modeManager->getModeName();
+        printf("Executing GetModeCommand: Current Mode is %s\n", modeName.c_str());
+        logger->writeLog("GetMode", "Current Mode: " + modeName);
+    }
 };
+#endif // GETMODECOMMAND_H

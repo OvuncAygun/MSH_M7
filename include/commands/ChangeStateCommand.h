@@ -1,11 +1,26 @@
-#pragma once
+#ifndef CHANGESTATECOMMAND_H
+#define CHANGESTATECOMMAND_H
 
-#include "ICommand.h"
-#include "IState.h"
+#include "../Command.h"
+#include "../external/IState.h"
 
-class ChangeStateCommand : public ICommand {
+class ChangeStateCommand : public Command {
+private:
+    IState* newState; // M4'teki somut bir durum olmalý
 public:
-    virtual ~ChangeStateCommand() = 0;
+    ChangeStateCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
+        IState* state)
+        : Command(dm, mm, sm, l, secM), newState(state) {
+    }
 
-    IState* state;
+    virtual ~ChangeStateCommand() {}
+
+    virtual void execute() {
+        printf("Executing ChangeState: Setting to %s\n", newState->getName().c_str());
+    //    stateManager->setState(newState);
+        // ChangeStateCommand.h, Satýr 20 (Düzeltilmiþ Kod)
+        stateManager->setState(*newState);
+        logger->writeLog("ChangeState", "New State: " + newState->getName());
+    }
 };
+#endif // CHANGESTATECOMMAND_H

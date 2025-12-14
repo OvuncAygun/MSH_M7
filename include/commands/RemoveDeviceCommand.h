@@ -1,11 +1,24 @@
-#pragma once
+#ifndef REMOVEDEVICECOMMAND_H
+#define REMOVEDEVICECOMMAND_H
 
-#include "ICommand.h"
-#include "IDevice.h"
+#include "../Command.h"
 
-class RemoveDeviceCommand : public ICommand {
+class RemoveDeviceCommand : public Command {
+private:
+    DeviceType deviceType;
+    int index;
 public:
-    virtual ~RemoveDeviceCommand() = 0;
+    RemoveDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
+        DeviceType type, int idx)
+        : Command(dm, mm, sm, l, secM), deviceType(type), index(idx) {
+    }
 
-    IDevice* device;
+    virtual ~RemoveDeviceCommand() {}
+
+    virtual void execute() {
+        printf("Executing RemoveDevice: Type %d, Index %d\n", deviceType, index);
+        deviceManager->removeDevice(deviceType, index);
+        logger->writeLog("RemoveDevice", "Type " + std::to_string(deviceType) + ", Index " + std::to_string(index));
+    }
 };
+#endif // REMOVEDEVICECOMMAND_H

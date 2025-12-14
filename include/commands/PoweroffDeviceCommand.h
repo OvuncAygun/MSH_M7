@@ -1,11 +1,24 @@
-#pragma once
+#ifndef POWEROFFDEVICECOMMAND_H
+#define POWEROFFDEVICECOMMAND_H
 
-#include "ICommand.h"
-#include "IDevice.h"
+#include "../Command.h"
 
-class PoweroffDeviceCommand : public ICommand {
+class PoweroffDeviceCommand : public Command {
+private:
+    DeviceType deviceType;
+    int index;
 public:
-    virtual ~PoweroffDeviceCommand() = 0;
+    PoweroffDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
+        DeviceType type, int idx)
+        : Command(dm, mm, sm, l, secM), deviceType(type), index(idx) {
+    }
 
-    IDevice* device;
+    virtual ~PoweroffDeviceCommand() {}
+
+    virtual void execute() {
+        printf("Executing PowerOff: Type %d, Index %d\n", deviceType, index);
+        deviceManager->powerOffDevice(deviceType, index);
+        logger->writeLog("PowerOffDevice", "Type " + std::to_string(deviceType) + ", Index " + std::to_string(index));
+    }
 };
+#endif // POWEROFFDEVICECOMMAND_H
