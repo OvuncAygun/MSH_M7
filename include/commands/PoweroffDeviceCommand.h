@@ -21,4 +21,4 @@ public:
         logger->writeLog("PowerOffDevice", "Type " + std::to_string(deviceType) + ", Index " + std::to_string(index));
     }
 };
-#endif // POWEROFFDEVICECOMMAND_H
+#endif 

@@ -17,4 +17,4 @@ public:
         logger->writeLog("GetMode", "Current Mode: " + modeName);
     }
 };
-#endif // GETMODECOMMAND_H
+#endif 

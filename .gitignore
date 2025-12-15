@@ -11,3 +11,4 @@ install_manifest.txt
 
 *.code-workspace
 .vscode/
+.vs/

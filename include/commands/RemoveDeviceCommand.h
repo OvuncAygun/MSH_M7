@@ -21,4 +21,4 @@ public:
         logger->writeLog("RemoveDevice", "Type " + std::to_string(deviceType) + ", Index " + std::to_string(index));
     }
 };
-#endif // REMOVEDEVICECOMMAND_H
+#endif 

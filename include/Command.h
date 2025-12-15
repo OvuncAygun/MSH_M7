@@ -1,4 +1,4 @@
-// include/Command.h
+
 #ifndef COMMAND_H
 #define COMMAND_H
 
@@ -9,7 +9,7 @@
 #include "../external/ILogger.h"
 #include "../external/ISecurityManager.h"
 #include "../external/DeviceType.h"       
-#include "Utility.h" // Yeni yardýmcý fonksiyonu dahil et
+#include "Utility.h" // yardýmcý fonksiyon
 
 // Command, tüm yöneticileri tutan soyut temel sýnýftýr.
 class Command : public ICommand {
@@ -30,4 +30,4 @@ public:
     virtual ~Command() {}
 };
 
-#endif // COMMAND_H
+#endif 

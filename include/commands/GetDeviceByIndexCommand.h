@@ -22,4 +22,4 @@ public:
         logger->writeLog("GetDevice", "Fetched device at index " + std::to_string(index));
     }
 };
-#endif // GETDEVICEBYINDEXCOMMAND_H
+#endif 

@@ -17,4 +17,4 @@ public:
         logger->writeLog("StateRestore", "Restored Next State");
     }
 };
-#endif // NEXTSTATECOMMAND_H
+#endif 

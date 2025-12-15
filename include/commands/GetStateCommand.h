@@ -19,4 +19,4 @@ public:
         logger->writeLog("GetState", "Current State: " + stateName);
     }
 };
-#endif // GETSTATECOMMAND_H
+#endif 

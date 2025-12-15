@@ -21,4 +21,4 @@ public:
         logger->writeLog("PowerOnDevice", "Type " + std::to_string(deviceType) + ", Index " + std::to_string(index));
     }
 };
-#endif // POWERONDEVICECOMMAND_H
+#endif 

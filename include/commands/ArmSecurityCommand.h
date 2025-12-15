@@ -12,11 +12,11 @@ public:
     virtual ~ArmSecurityCommand() {}
 
     virtual void execute() {
-        // Bu komut, M6'daki SecurityManager'ý aktifleþtirir.
+     // Bu komut, M6'daki SecurityManager'ý aktifleþtirir.
         printf("Executing ArmSecurityCommand: Security system activated.\n");
-     //   securityManager->armSystem(); // Varsayýmsal metod but bu hata verdi deðiþtirdim.
+     // securityManager->armSystem(); // Varsayýmsal metod but bu hata verdi deðiþtirdim.
         securityManager->setIsSystemArmed(true);
         logger->writeLog("Security", "System Armed.");
     }
 };
-#endif // ARMSECURITYCOMMAND_H
+#endif 

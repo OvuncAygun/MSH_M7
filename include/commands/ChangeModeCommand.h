@@ -20,4 +20,4 @@ public:
         logger->writeLog("ChangeMode", "New Mode: " + newMode->getModeName());
     }
 };
-#endif // CHANGEMODECOMMAND_H
+#endif 

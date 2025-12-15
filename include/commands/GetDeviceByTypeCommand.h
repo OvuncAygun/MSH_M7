@@ -16,9 +16,8 @@ public:
 
     virtual void execute() {
         printf("Executing GetDeviceByTypeCommand: Listing all devices of Type %d\n", type);
-        // IDeviceManager'dan bu türdeki tüm cihazlarý alýp listelemelidir.
-        // deviceManager->getAllDevicesByType(type); 
+        // IDeviceManager'dan bu türdeki tüm cihazlarý alýp listelemelidir. 
         logger->writeLog("GetDevice", "Listed devices of type " + std::to_string(type));
     }
 };
-#endif // GETDEVICEBYTYPECOMMAND_H
+#endif 

@@ -1,15 +1,14 @@
-// include/commands/AddDeviceCommand.h
 #ifndef ADDDEVICECOMMAND_H
 #define ADDDEVICECOMMAND_H
 
-#include "../Command.h" // Artýk Command.h'den kalýtým alýyoruz
+#include "../Command.h" // inheritance from Command.h
 
 class AddDeviceCommand : public Command {
 private:
     DeviceType deviceType;
     int count;
 public:
-    // Command kurucusunu çaðýrýyoruz
+    // Command constructor
     AddDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
         DeviceType type, int c)
         : Command(dm, mm, sm, l, secM), deviceType(type), count(c) {
@@ -28,6 +27,4 @@ public:
         logger->writeLog("AddDevice", logDetails);
     }
 };
-#endif // ADDDEVICECOMMAND_H
-
-// NOT: Tüm diðer komut dosyalarýnýzý (PowerOn, RemoveDevice, vb.) bu formata göre güncelleyin.
+#endif 

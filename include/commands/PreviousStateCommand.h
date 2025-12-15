@@ -17,4 +17,4 @@ public:
         logger->writeLog("StateRestore", "Restored Previous State");
     }
 };
-#endif // PREVIOUSSTATECOMMAND_H
+#endif 

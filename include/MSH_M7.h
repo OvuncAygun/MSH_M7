@@ -48,4 +48,4 @@ public:
     ISecurityManager* getSecurityManager() const { return securityManager; }
 };
 
-#endif // MSH_M7_H
+#endif 

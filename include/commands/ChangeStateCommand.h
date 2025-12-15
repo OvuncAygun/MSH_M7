@@ -17,10 +17,9 @@ public:
 
     virtual void execute() {
         printf("Executing ChangeState: Setting to %s\n", newState->getName().c_str());
-    //    stateManager->setState(newState);
-        // ChangeStateCommand.h, Satýr 20 (Düzeltilmiþ Kod)
+    // stateManager->setState(newState); hatasý düzeltildi
         stateManager->setState(*newState);
         logger->writeLog("ChangeState", "New State: " + newState->getName());
     }
 };
-#endif // CHANGESTATECOMMAND_H
+#endif 
