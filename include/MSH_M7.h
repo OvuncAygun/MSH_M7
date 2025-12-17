@@ -7,11 +7,12 @@
 #include "../external/IStateManager.h"
 #include "../external/ILogger.h"
 #include "../external/ISecurityManager.h"
+#include "../external/IDevice.h" //
 #include <map>
 #include <string>
+#include <vector> //
 #include <cstdio>
 
-// Modül 8: MenuCommandManager (Singleton)
 class MenuCommandManager {
 private:
     static MenuCommandManager* instance;
@@ -23,24 +24,39 @@ private:
     ILogger* logger;
     ISecurityManager* securityManager;
 
-    MenuCommandManager()
-        : deviceManager(0), modeManager(0), stateManager(0), logger(0), securityManager(0) {
-    }
+    // --- Result Holders: Modül 7 komutlarýndan dönen veriler ---
+    IDevice* lastFoundDevice;       //
+    IState* lastFoundState;         //
+    std::string lastFoundModeName;  //
+    std::vector<IDevice*> lastDeviceList; //
 
-    // Singleton C++98 Kurallarý
+    // HATA ÇÖZÜMÜ: Buradaki { } gövdesini sildik, sadece ; býraktýk.
+    MenuCommandManager();
+
     ~MenuCommandManager();
     MenuCommandManager(const MenuCommandManager&);
     MenuCommandManager& operator=(const MenuCommandManager&);
 
 public:
     static MenuCommandManager* getInstance();
-
+    
+    static void releaseInstance() {
+         if (instance != 0) {
+             delete instance;
+         instance = 0;
+    }
+}
     void initialize(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM);
     void registerCommand(const std::string& key, ICommand* command);
     bool executeCommand(const std::string& key);
     void displayMenu() const;
 
-    // Command nesneleri oluþturulurken kullanýlmak üzere tüm yöneticilere eriþim saðlar
+    // --- Result Accessors ---
+    IDevice** getLastDevicePtr() { return &lastFoundDevice; }
+    IState** getLastStatePtr() { return &lastFoundState; }
+    std::string* getLastModeNamePtr() { return &lastFoundModeName; }
+    std::vector<IDevice*>* getLastDeviceListPtr() { return &lastDeviceList; }
+
     IDeviceManager* getDeviceManager() const { return deviceManager; }
     IModeManager* getModeManager() const { return modeManager; }
     IStateManager* getStateManager() const { return stateManager; }
@@ -48,4 +64,4 @@ public:
     ISecurityManager* getSecurityManager() const { return securityManager; }
 };
 
-#endif 
+#endif

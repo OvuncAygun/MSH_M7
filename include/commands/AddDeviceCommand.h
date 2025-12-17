@@ -1,14 +1,15 @@
 #ifndef ADDDEVICECOMMAND_H
 #define ADDDEVICECOMMAND_H
 
-#include "../Command.h" // inheritance from Command.h
+#include "../Command.h"
 
 class AddDeviceCommand : public Command {
 private:
     DeviceType deviceType;
     int count;
+
 public:
-    // Command constructor
+    // Kurucu (Constructor): Tüm mantýk burada
     AddDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
         DeviceType type, int c)
         : Command(dm, mm, sm, l, secM), deviceType(type), count(c) {
@@ -17,14 +18,18 @@ public:
     virtual ~AddDeviceCommand() {}
 
     virtual void execute() {
+        // Konsol çýktýsý
         printf("Executing AddDevice: Type %d, Count %d\n", deviceType, count);
 
-        // IDeviceManager::addDevice'a sadece 2 argüman gönderiyoruz (C2660 hatasýnýn çözümü)
+        // Manager çaðrýsý
         deviceManager->addDevice(deviceType, count);
 
-        // Loglama için C++98 uyumlu IntToString kullanýyoruz (E0415/E0165 hatasýnýn çözümü)
-        std::string logDetails = "Type " + IntToString(deviceType) + ", Count " + IntToString(count);
+        // Loglama iþlemi: static_cast ile enum'ý int'e çeviriyoruz (Tür güvenliði için)
+        std::string logDetails = "Type " + IntToString(static_cast<int>(deviceType)) +
+            ", Count " + IntToString(count);
+
         logger->writeLog("AddDevice", logDetails);
     }
 };
-#endif 
+
+#endif

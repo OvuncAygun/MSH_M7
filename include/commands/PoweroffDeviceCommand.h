@@ -18,7 +18,7 @@ public:
     virtual void execute() {
         printf("Executing PowerOff: Type %d, Index %d\n", deviceType, index);
         deviceManager->powerOffDevice(deviceType, index);
-        logger->writeLog("PowerOffDevice", "Type " + std::to_string(deviceType) + ", Index " + std::to_string(index));
+        logger->writeLog("PowerOffDevice", "Type " + IntToString(static_cast<int>(deviceType)) + ", Index " + IntToString(index));
     }
 };
 #endif 

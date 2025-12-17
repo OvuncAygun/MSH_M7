@@ -2,7 +2,7 @@
 
 class ISecurityManager {
 public:
-    virtual ~ISecurityManager() = 0;
+    virtual ~ISecurityManager() {}
 
     virtual bool getIsSystemArmed() = 0;
     virtual void setIsSystemArmed(bool isSystemArmed) = 0;

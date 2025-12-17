@@ -18,7 +18,7 @@ public:
     virtual void execute() {
         printf("Executing RemoveDevice: Type %d, Index %d\n", deviceType, index);
         deviceManager->removeDevice(deviceType, index);
-        logger->writeLog("RemoveDevice", "Type " + std::to_string(deviceType) + ", Index " + std::to_string(index));
+        logger->writeLog("RemoveDevice", "Type " + IntToString(static_cast<int>(deviceType)) + ", Index " + IntToString(index));
     }
 };
 #endif 

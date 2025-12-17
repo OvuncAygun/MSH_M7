@@ -40,4 +40,3 @@ target_sources(MSH_M7
 
 include(CTest)
 enable_testing()
-
