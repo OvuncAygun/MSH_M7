@@ -1,26 +1,23 @@
 #ifndef GETDEVICEBYTYPECOMMAND_H
 #define GETDEVICEBYTYPECOMMAND_H
 
-#include "../Command.h"
+#include "Command.h"
+#include "IGetDeviceByTypeCommand.h"
 #include <vector>
 
-class GetDeviceByTypeCommand : public Command {
-private:
-    DeviceType type;
-    std::vector<IDevice*>* listResult; // M8'deki listenin adresi
-
+class GetDeviceByTypeCommand : public Command, public IGetDeviceByTypeCommand {
 public:
     GetDeviceByTypeCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
         DeviceType t, std::vector<IDevice*>* res)
-        : Command(dm, mm, sm, l, secM), type(t), listResult(res) {
+        : Command(dm, mm, sm, l, secM) {
     }
 
-    virtual ~GetDeviceByTypeCommand() {}
+    ~GetDeviceByTypeCommand() {}
 
-    virtual void execute() {
+    void execute() {
         printf("Executing GetDeviceByTypeCommand: Listing all devices of Type %d\n", type);
 
-        // IDeviceManager'dan bu türdeki tüm cihazlarý alýyoruz
+        // IDeviceManager'dan bu tï¿½rdeki tï¿½m cihazlarï¿½ alï¿½yoruz
         std::vector<IDevice*> devices = deviceManager->getDeviceByType(type);
 
         if (devices.empty()) {
@@ -28,7 +25,7 @@ public:
         }
         else {
             for (size_t i = 0; i < devices.size(); ++i) {
-                // Her cihazýn adýný ve durumunu ekrana yazdýrýyoruz
+                // Her cihazï¿½n adï¿½nï¿½ ve durumunu ekrana yazdï¿½rï¿½yoruz
                 printf(" - [%d] Name: %s, Power: %s\n",
                     devices[i]->getIndex(),
                     devices[i]->getName().c_str(),

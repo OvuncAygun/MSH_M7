@@ -1,29 +1,28 @@
 #ifndef CHANGESTATECOMMAND_H
 #define CHANGESTATECOMMAND_H
 
-#include "../Command.h"
-#include "../external/IState.h"
+#include "Command.h"
+#include "IChangeStateCommand.h"
+#include "IState.h"
 
-class ChangeStateCommand : public Command {
-private:
-    IState* newState; // M4'teki somut bir durum olmalý
+class ChangeStateCommand : public Command, public IChangeStateCommand {
 public:
     ChangeStateCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
         IState* state)
-        : Command(dm, mm, sm, l, secM), newState(state) {
+        : Command(dm, mm, sm, l, secM) {
     }
 
-    virtual ~ChangeStateCommand() {}
+    ~ChangeStateCommand() {}
 
-    virtual void execute() {
-        if (newState == NULL) { // C++98 için NULL kontrolü
+    void execute() {
+        if (newState == NULL) { // C++98 iï¿½in NULL kontrolï¿½
             printf("ERROR: New state is null!\n");
             return;
         }
 
         printf("Executing ChangeState: Setting to %s\n", newState->getName().c_str());
 
-        // State Manager'a referans üzerinden aktarým
+        // State Manager'a referans ï¿½zerinden aktarï¿½m
         stateManager->setState(*newState);
 
         logger->writeLog("ChangeState", "New State: " + newState->getName());

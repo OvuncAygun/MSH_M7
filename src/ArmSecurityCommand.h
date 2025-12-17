@@ -1,20 +1,22 @@
 #ifndef ARMSECURITYCOMMAND_H
 #define ARMSECURITYCOMMAND_H
 
-#include "../Command.h"
+#include "Command.h"
+#include "IArmSecurityCommand.h"
 
-class ArmSecurityCommand : public Command {
+
+class ArmSecurityCommand : public Command, public IArmSecurityCommand {
 public:
     ArmSecurityCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
         : Command(dm, mm, sm, l, secM) {
     }
 
-    virtual ~ArmSecurityCommand() {}
+    ~ArmSecurityCommand() {}
 
-    virtual void execute() {
-     // Bu komut, M6'daki SecurityManager'ý aktifleþtirir.
+    void execute() {
+     // Bu komut, M6'daki SecurityManager'ï¿½ aktifleï¿½tirir.
         printf("Executing ArmSecurityCommand: Security system activated.\n");
-     // securityManager->armSystem(); // Varsayýmsal metod but bu hata verdi deðiþtirdim.
+     // securityManager->armSystem(); // Varsayï¿½msal metod but bu hata verdi deï¿½iï¿½tirdim.
         securityManager->setIsSystemArmed(true);
         logger->writeLog("Security", "System Armed.");
     }

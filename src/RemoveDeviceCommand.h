@@ -1,21 +1,19 @@
 #ifndef REMOVEDEVICECOMMAND_H
 #define REMOVEDEVICECOMMAND_H
 
-#include "../Command.h"
+#include "Command.h"
+#include "IRemoveDeviceCommand.h"
 
-class RemoveDeviceCommand : public Command {
-private:
-    DeviceType deviceType;
-    int index;
+class RemoveDeviceCommand : public Command, public IRemoveDeviceCommand {
 public:
     RemoveDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
         DeviceType type, int idx)
-        : Command(dm, mm, sm, l, secM), deviceType(type), index(idx) {
+        : Command(dm, mm, sm, l, secM) {
     }
 
-    virtual ~RemoveDeviceCommand() {}
+    ~RemoveDeviceCommand() {}
 
-    virtual void execute() {
+    void execute() {
         printf("Executing RemoveDevice: Type %d, Index %d\n", deviceType, index);
         deviceManager->removeDevice(deviceType, index);
         logger->writeLog("RemoveDevice", "Type " + IntToString(static_cast<int>(deviceType)) + ", Index " + IntToString(index));

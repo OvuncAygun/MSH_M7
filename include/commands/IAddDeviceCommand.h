@@ -1,5 +1,5 @@
-#ifndef ADDDEVICECOMMAND_H
-#define ADDDEVICECOMMAND_H
+#ifndef IADDDEVICECOMMAND_H
+#define IADDDEVICECOMMAND_H
 
 #include "ICommand.h"
 #include "DeviceCreationType.h"
@@ -17,8 +17,6 @@ public:
     int count;
 
     virtual void execute() = 0;
-
-    
 };
 
 #endif

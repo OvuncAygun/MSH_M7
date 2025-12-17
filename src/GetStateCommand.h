@@ -1,38 +1,36 @@
 #ifndef GETSTATECOMMAND_H
 #define GETSTATECOMMAND_H
 
-#include "../Command.h"
-#include "../../external/IState.h"
+#include "Command.h"
+#include "IGetStateCommand.h"
+#include "IState.h"
 
-class GetStateCommand : public Command {
-private:
-    IState** stateResult; // M8'deki IState* adresi
-
+class GetStateCommand : public Command, public IGetStateCommand {
 public:
     GetStateCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM, IState** res)
-        : Command(dm, mm, sm, l, secM), stateResult(res) {
+        : Command(dm, mm, sm, l, secM) {
     }
 
-    // 1. BURAYA EKLE: Sanal Yýkýcý (Destructor)
-    // Bellek sýzýntýlarýný önlemek için her komutun kendi sanal yýkýcýsý olmalýdýr.
-    virtual ~GetStateCommand() {}
+    // 1. BURAYA EKLE: Sanal Yï¿½kï¿½cï¿½ (Destructor)
+    // Bellek sï¿½zï¿½ntï¿½larï¿½nï¿½ ï¿½nlemek iï¿½in her komutun kendi sanal yï¿½kï¿½cï¿½sï¿½ olmalï¿½dï¿½r.
+    ~GetStateCommand() {}
 
-    virtual void execute() {
-        // 1. Mevcut durumu güvenli bir þekilde al
+    void execute() {
+        // 1. Mevcut durumu gï¿½venli bir ï¿½ekilde al
         IState* currentState = stateManager->getCurrentState();
 
-        // 2. Modül 8'deki pointer'ý güncelle (Her zaman güvenli)
+        // 2. Modï¿½l 8'deki pointer'ï¿½ gï¿½ncelle (Her zaman gï¿½venli)
         if (stateResult != 0) {
             *stateResult = currentState;
         }
 
-        // 3. NULL Kontrolü: Eðer state varsa logla ve yazdýr, yoksa uyar
+        // 3. NULL Kontrolï¿½: Eï¿½er state varsa logla ve yazdï¿½r, yoksa uyar
         if (currentState != 0) {
             printf("Executing GetStateCommand: Current state is %s\n", currentState->getName().c_str());
             logger->writeLog("GetState", "Current State: " + currentState->getName());
         }
         else {
-            // Çökme riskini önleyen güvenli çýkýþ
+            // ï¿½ï¿½kme riskini ï¿½nleyen gï¿½venli ï¿½ï¿½kï¿½ï¿½
             printf("Executing GetStateCommand: WARNING - Current state is NULL!\n");
             logger->writeLog("GetState", "Warning: Current state is null.");
         }

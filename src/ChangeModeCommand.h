@@ -1,20 +1,18 @@
 #ifndef CHANGEMODECOMMAND_H
 #define CHANGEMODECOMMAND_H
 
-#include "../Command.h"
+#include "Command.h"
+#include "IChangeModeCommand.h"
 
-class ChangeModeCommand : public Command {
-private:
-    IModeStrategy* newMode; // M3'teki somut bir strateji olmalý
+class ChangeModeCommand : public Command, public IChangeModeCommand {
 public:
     ChangeModeCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
         IModeStrategy* mode)
-        : Command(dm, mm, sm, l, secM), newMode(mode) {
-    }
+        : Command(dm, mm, sm, l, secM) {}
 
-    virtual ~ChangeModeCommand() {}
+    ~ChangeModeCommand() {}
 
-    virtual void execute() {
+    void execute() {
         printf("Executing ChangeMode: Setting to %s\n", newMode->getModeName().c_str());
         modeManager->setMode(newMode);
         logger->writeLog("ChangeMode", "New Mode: " + newMode->getModeName());

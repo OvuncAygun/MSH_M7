@@ -1,19 +1,14 @@
 #ifndef GETDEVICEBYINDEXCOMMAND_H
 #define GETDEVICEBYINDEXCOMMAND_H
 
-#include "../Command.h"
-#include "../../external/IDevice.h"
+#include "Command.h"
+#include "IGetDeviceByIndexCommand.h"
 
-class GetDeviceByIndexCommand : public Command {
-private:
-    DeviceType type;
-    int index;
-    IDevice** resultHolder; // Modül 8'deki IDevice* deðiþkeninin adresi
-
+class GetDeviceByIndexCommand : public Command, public IGetDeviceByIndexCommand {
 public:
     GetDeviceByIndexCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
         DeviceType t, int idx, IDevice** res)
-        : Command(dm, mm, sm, l, secM), type(t), index(idx), resultHolder(res) {
+        : Command(dm, mm, sm, l, secM) {
     }
 
     virtual ~GetDeviceByIndexCommand() {}
@@ -21,11 +16,11 @@ public:
     virtual void execute() {
         printf("Executing GetDeviceByIndexCommand: Looking up Index %d\n", index);
 
-        // IDeviceManager'dan indekse göre cihazý çekiyoruz
+        // IDeviceManager'dan indekse gï¿½re cihazï¿½ ï¿½ekiyoruz
         IDevice* device = deviceManager->getDeviceByIndex(index);
 
         if (device != NULL) {
-            // Cihazýn detaylý bilgilerini yazdýrýyoruz
+            // Cihazï¿½n detaylï¿½ bilgilerini yazdï¿½rï¿½yoruz
             printf("Device Found:\n");
             printf(" -> Name: %s\n", device->getName().c_str());
             printf(" -> Type: %d\n", device->getDeviceType());

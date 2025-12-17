@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ADDDEVICECOMMAND_H
+#define ADDDEVICECOMMAND_H
 
 #include "Command.h"
 #include "IAddDeviceCommand.h"
@@ -11,9 +12,9 @@ public:
         : Command(dm, mm, sm, l, secM){
     }
 
-    virtual ~AddDeviceCommand() {}
+    ~AddDeviceCommand() {}
 
-    virtual void execute() {
+    void execute() {
         // Konsol ��kt�s�
         printf("Executing AddDevice: Type %d, Count %d\n", deviceCreationType, count);
 
@@ -27,3 +28,4 @@ public:
         logger->writeLog("AddDevice", logDetails);
     }
 };
+#endif
