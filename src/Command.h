@@ -3,18 +3,18 @@
 #define COMMAND_H
 
 #include "ICommand.h"
-#include "../external/IDeviceManager.h"
-#include "../external/IModeManager.h"
-#include "../external/IStateManager.h"
-#include "../external/ILogger.h"
-#include "../external/ISecurityManager.h"
-#include "../external/DeviceType.h"       
-#include "Utility.h" // yardýmcý fonksiyon
+#include "IDeviceManager.h"
+#include "IModeManager.h"
+#include "IStateManager.h"
+#include "ILogger.h"
+#include "ISecurityManager.h"
+#include "DeviceType.h"       
+#include "Utility.h" // yardï¿½mcï¿½ fonksiyon
 
-// Command, tüm yöneticileri tutan soyut temel sýnýftýr.
+// Command, tï¿½m yï¿½neticileri tutan soyut temel sï¿½nï¿½ftï¿½r.
 class Command : public ICommand {
 protected:
-    // Tüm somut komutlarýn kullanacaðý yöneticiler
+    // Tï¿½m somut komutlarï¿½n kullanacaï¿½ï¿½ yï¿½neticiler
     IDeviceManager* deviceManager;
     IModeManager* modeManager;
     IStateManager* stateManager;
@@ -22,7 +22,7 @@ protected:
     ISecurityManager* securityManager;
 
 public:
-    // Kurucu: Tüm 5 yöneticiyi alýr (C++98)
+    // Kurucu: Tï¿½m 5 yï¿½neticiyi alï¿½r (C++98)
     Command(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
         : deviceManager(dm), modeManager(mm), stateManager(sm), logger(l), securityManager(secM) {
     }

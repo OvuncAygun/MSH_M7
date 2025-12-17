@@ -1,5 +1,6 @@
 #pragma once
 
+#include "DeviceCreationType.h"
 #include "DeviceType.h"
 #include "IDevice.h"
 #include <string>
@@ -7,11 +8,16 @@
 
 class IDeviceManager {
 public:
-    // Sanal Yýkýcý: Saf sanal yýkýcýlar,.cpp dosyasýnda gövde gerektirir.En temiz çözüm, sadece sanal yapmaktýr.
+    // Sanal Yï¿½kï¿½cï¿½: Saf sanal yï¿½kï¿½cï¿½lar,.cpp dosyasï¿½nda gï¿½vde gerektirir.En temiz ï¿½ï¿½zï¿½m, sadece sanal yapmaktï¿½r.
     
     virtual ~IDeviceManager() {}
 
-    virtual void addDevice(DeviceType deviceType, int count) = 0;
+    virtual void addDevice(
+        DeviceCreationType deviceCreationType,
+        const std::string& name,
+        const std::vector<std::string>& config,
+        int count
+    ) = 0;
 
     virtual std::vector<IDevice*> getDeviceByType(DeviceType deviceType) = 0;
 

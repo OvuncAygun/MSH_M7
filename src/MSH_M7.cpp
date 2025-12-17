@@ -1,19 +1,19 @@
-#include "../include/MSH_M7.h" 
+#include "MSH_M7.h" 
 #include <iostream>
 #include <string>
 
 MenuCommandManager* MenuCommandManager::instance = 0;
 
-// Varsayýlan Kurucu Tanýmý (C2084 Çözümü)
+// Varsayï¿½lan Kurucu Tanï¿½mï¿½ (C2084 ï¿½ï¿½zï¿½mï¿½)
 MenuCommandManager::MenuCommandManager()
     : deviceManager(0), modeManager(0), stateManager(0), logger(0), securityManager(0),
     lastFoundDevice(0), lastFoundState(0), lastFoundModeName("") //
 {
 }
 
-// --- Yýkýcý Uygulamasý (Geliþtirilmiþ Versiyon) ---
+// --- Yï¿½kï¿½cï¿½ Uygulamasï¿½ (Geliï¿½tirilmiï¿½ Versiyon) ---
 MenuCommandManager::~MenuCommandManager() {
-    // 1. Kayýtlý komut nesnelerini temizle
+    // 1. Kayï¿½tlï¿½ komut nesnelerini temizle
     std::map<std::string, ICommand*>::iterator it;
     for (it = commandMap.begin(); it != commandMap.end(); ++it) {
         delete it->second; // Her bir komut nesnesini siler
@@ -21,7 +21,7 @@ MenuCommandManager::~MenuCommandManager() {
     commandMap.clear();
 
     // 2. Kendisine emanet edilen Manager nesnelerini temizle
-    // Not: Bu nesneler dýþarýda 'new' ile oluþturulup initialize ile verildiyse silinmelidir.
+    // Not: Bu nesneler dï¿½ï¿½arï¿½da 'new' ile oluï¿½turulup initialize ile verildiyse silinmelidir.
     if (deviceManager) { delete deviceManager; deviceManager = 0; }
     if (modeManager) { delete modeManager; modeManager = 0; }
     if (stateManager) { delete stateManager; stateManager = 0; }
@@ -56,7 +56,7 @@ bool MenuCommandManager::executeCommand(const std::string& key) {
     std::map<std::string, ICommand*>::iterator it = commandMap.find(key);
 
     if (it != commandMap.end()) {
-        it->second->execute(); // Bu çaðrý M7 komutlarýný çalýþtýrýr ve M8 verilerini günceller.
+        it->second->execute(); // Bu ï¿½aï¿½rï¿½ M7 komutlarï¿½nï¿½ ï¿½alï¿½ï¿½tï¿½rï¿½r ve M8 verilerini gï¿½nceller.
         return true;
     }
     else {
@@ -71,7 +71,7 @@ void MenuCommandManager::displayMenu() const {
     printf("[10] Shutdown\n");
 }
 
-// Singleton Kýsýtlayýcýlarý (C2264 Çözümü)
+// Singleton Kï¿½sï¿½tlayï¿½cï¿½larï¿½ (C2264 ï¿½ï¿½zï¿½mï¿½)
 MenuCommandManager::MenuCommandManager(const MenuCommandManager& other)
     : deviceManager(0), modeManager(0), stateManager(0), logger(0), securityManager(0),
     lastFoundDevice(0), lastFoundState(0), lastFoundModeName("")
