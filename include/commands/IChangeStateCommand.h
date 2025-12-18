@@ -6,7 +6,7 @@
 
 class IChangeStateCommand : public virtual ICommand {
 public:
-    virtual ~IChangeStateCommand() = 0;
+    virtual ~IChangeStateCommand() {};
 
     IState* state;
 

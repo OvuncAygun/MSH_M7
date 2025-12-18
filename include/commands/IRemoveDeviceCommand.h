@@ -7,7 +7,7 @@
 
 class IRemoveDeviceCommand : public virtual ICommand {
 public:
-    virtual ~IRemoveDeviceCommand() = 0;
+    virtual ~IRemoveDeviceCommand() {};
 
     IDevice* device;
 

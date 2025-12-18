@@ -5,7 +5,7 @@
 
 class IPreviousStateCommand : public virtual ICommand {
 public:
-    virtual ~IPreviousStateCommand() = 0;
+    virtual ~IPreviousStateCommand() {};
 
     virtual void execute() = 0;
 };

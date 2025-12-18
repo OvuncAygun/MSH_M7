@@ -8,7 +8,7 @@
 
 class IGetDeviceByTypeCommand : public virtual ICommand {
 public:
-    virtual ~IGetDeviceByTypeCommand() = 0;
+    virtual ~IGetDeviceByTypeCommand() {};
 
     DeviceType type;
     std::vector<IDevice*> devices;

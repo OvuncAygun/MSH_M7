@@ -7,7 +7,7 @@
 
 class IPoweronDeviceCommand : public virtual ICommand {
 public:
-    virtual ~IPoweronDeviceCommand() = 0;
+    virtual ~IPoweronDeviceCommand() {};
 
     IDevice* device;
 

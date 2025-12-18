@@ -6,7 +6,7 @@
 
 class IGetDeviceByIndexCommand : public virtual ICommand {
 public:
-    virtual ~IGetDeviceByIndexCommand() = 0;
+    virtual ~IGetDeviceByIndexCommand() {};
 
     int index;
     IDevice* device;

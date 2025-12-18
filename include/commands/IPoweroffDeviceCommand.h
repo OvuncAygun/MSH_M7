@@ -7,7 +7,7 @@
 
 class IPoweroffDeviceCommand : public virtual ICommand {
 public:
-    virtual ~IPoweroffDeviceCommand() = 0;
+    virtual ~IPoweroffDeviceCommand() {};
     
     IDevice* device;
 
