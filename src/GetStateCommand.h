@@ -7,7 +7,7 @@
 
 class GetStateCommand : public Command, public IGetStateCommand {
 public:
-    GetStateCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM, IState** res)
+    GetStateCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
         : Command(dm, mm, sm, l, secM) {
     }
 
@@ -20,8 +20,8 @@ public:
         IState* currentState = stateManager->getCurrentState();
 
         // 2. Mod�l 8'deki pointer'� g�ncelle (Her zaman g�venli)
-        if (stateResult != 0) {
-            *stateResult = currentState;
+        if (state != 0) {
+            state = currentState;
         }
 
         // 3. NULL Kontrol�: E�er state varsa logla ve yazd�r, yoksa uyar

@@ -7,8 +7,7 @@
 class AddDeviceCommand : public Command, public IAddDeviceCommand {
 public:
     // Kurucu (Constructor): T�m mant�k burada
-    AddDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
-        DeviceType type, int c)
+    AddDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
         : Command(dm, mm, sm, l, secM){
     }
 

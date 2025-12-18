@@ -4,12 +4,12 @@
 #include "ICommand.h"
 #include "IDevice.h"
 
-class IGetDeviceByIndexCommand : public ICommand {
+class IGetDeviceByIndexCommand : public virtual ICommand {
 public:
     virtual ~IGetDeviceByIndexCommand() = 0;
 
     int index;
-    IDevice** resultHolder; // Mod�l 8'deki IDevice* de�i�keninin adresi
+    IDevice* device;
 
     virtual void execute() = 0;
 };

@@ -6,8 +6,7 @@
 
 class GetDeviceByIndexCommand : public Command, public IGetDeviceByIndexCommand {
 public:
-    GetDeviceByIndexCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
-        DeviceType t, int idx, IDevice** res)
+    GetDeviceByIndexCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
         : Command(dm, mm, sm, l, secM) {
     }
 

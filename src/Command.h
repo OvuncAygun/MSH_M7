@@ -12,7 +12,7 @@
 #include "Utility.h" // yard�mc� fonksiyon
 
 // Command, t�m y�neticileri tutan soyut temel s�n�ft�r.
-class Command : public ICommand {
+class Command : public virtual ICommand {
 protected:
     // T�m somut komutlar�n kullanaca�� y�neticiler
     IDeviceManager* deviceManager;

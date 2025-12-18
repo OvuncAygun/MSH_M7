@@ -6,12 +6,12 @@
 #include "DeviceType.h"
 #include <vector>
 
-class IGetDeviceByTypeCommand : public ICommand {
+class IGetDeviceByTypeCommand : public virtual ICommand {
 public:
     virtual ~IGetDeviceByTypeCommand() = 0;
 
     DeviceType type;
-    std::vector<IDevice*>* listResult; // M8'deki listenin adresi
+    std::vector<IDevice*> devices;
 
     virtual void execute() = 0;
 };

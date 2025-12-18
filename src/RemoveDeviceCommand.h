@@ -6,17 +6,16 @@
 
 class RemoveDeviceCommand : public Command, public IRemoveDeviceCommand {
 public:
-    RemoveDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
-        DeviceType type, int idx)
+    RemoveDeviceCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
         : Command(dm, mm, sm, l, secM) {
     }
 
     ~RemoveDeviceCommand() {}
 
     void execute() {
-        printf("Executing RemoveDevice: Type %d, Index %d\n", deviceType, index);
-        deviceManager->removeDevice(deviceType, index);
-        logger->writeLog("RemoveDevice", "Type " + IntToString(static_cast<int>(deviceType)) + ", Index " + IntToString(index));
+        printf("Executing RemoveDevice: Type %d, Index %d\n", device->getDeviceType(), device->getIndex());
+        deviceManager->removeDevice(device);
+        logger->writeLog("RemoveDevice", "Type " + IntToString(static_cast<int>(device->getDeviceType())) + ", Index " + IntToString(device->getIndex()));
     }
 };
 #endif 

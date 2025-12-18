@@ -7,8 +7,7 @@
 
 class GetDeviceByTypeCommand : public Command, public IGetDeviceByTypeCommand {
 public:
-    GetDeviceByTypeCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
-        DeviceType t, std::vector<IDevice*>* res)
+    GetDeviceByTypeCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
         : Command(dm, mm, sm, l, secM) {
     }
 

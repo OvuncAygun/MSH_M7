@@ -3,13 +3,13 @@
 
 #include "ICommand.h"
 #include "DeviceType.h"
+#include "IDevice.h"
 
-class IRemoveDeviceCommand : public ICommand {
+class IRemoveDeviceCommand : public virtual ICommand {
 public:
     virtual ~IRemoveDeviceCommand() = 0;
 
-    DeviceType deviceType;
-    int index;
+    IDevice* device;
 
     virtual void execute() = 0;
 };

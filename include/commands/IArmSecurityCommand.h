@@ -3,7 +3,7 @@
 
 #include "ICommand.h"
 
-class IArmSecurityCommand : public ICommand {
+class IArmSecurityCommand : public virtual ICommand {
 public:
     virtual ~IArmSecurityCommand() = 0;
 

@@ -1,83 +1,57 @@
-#include "MSH_M7.h" 
-#include <iostream>
-#include <string>
+#include "MSH_M7.h"
+#include "GetModeCommand.h"
+#include "ChangeModeCommand.h"
+#include "GetStateCommand.h"
+#include "ChangeStateCommand.h"
+#include "PreviousStateCommand.h"
+#include "NextStateCommand.h"
+#include "GetDeviceByTypeCommand.h"
+#include "GetDeviceByIndexCommand.h"
+#include "RemoveDeviceCommand.h"
+#include "PoweronDeviceCommand.h"
+#include "PoweroffDeviceCommand.h"
+#include "AddDeviceCommand.h"
+#include "ArmSecurityCommand.h"
 
-MenuCommandManager* MenuCommandManager::instance = 0;
+MSH_M7::MSH_M7() = default;
+MSH_M7::~MSH_M7() = default;
 
-// Varsay�lan Kurucu Tan�m� (C2084 ��z�m�)
-MenuCommandManager::MenuCommandManager()
-    : deviceManager(0), modeManager(0), stateManager(0), logger(0), securityManager(0),
-    lastFoundDevice(0), lastFoundState(0), lastFoundModeName("") //
-{
-}
-
-// --- Y�k�c� Uygulamas� (Geli�tirilmi� Versiyon) ---
-MenuCommandManager::~MenuCommandManager() {
-    // 1. Kay�tl� komut nesnelerini temizle
-    std::map<std::string, ICommand*>::iterator it;
-    for (it = commandMap.begin(); it != commandMap.end(); ++it) {
-        delete it->second; // Her bir komut nesnesini siler
-    }
-    commandMap.clear();
-
-    // 2. Kendisine emanet edilen Manager nesnelerini temizle
-    // Not: Bu nesneler d��ar�da 'new' ile olu�turulup initialize ile verildiyse silinmelidir.
-    if (deviceManager) { delete deviceManager; deviceManager = 0; }
-    if (modeManager) { delete modeManager; modeManager = 0; }
-    if (stateManager) { delete stateManager; stateManager = 0; }
-    if (logger) { delete logger; logger = 0; }
-    if (securityManager) { delete securityManager; securityManager = 0; }
-
-    printf("MenuCommandManager: All managers and commands cleaned up.\n");
-}
-
-MenuCommandManager* MenuCommandManager::getInstance() {
-    if (instance == 0) {
-        instance = new MenuCommandManager();
-    }
-    return instance;
-}
-
-
-void MenuCommandManager::initialize(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM) {
+void MSH_M7::setDeviceManager(IDeviceManager* dm) {
     deviceManager = dm;
+}
+
+void MSH_M7::setModeManager(IModeManager* mm) {
     modeManager = mm;
+}
+
+void MSH_M7::setStateManager(IStateManager* sm) {
     stateManager = sm;
+}
+
+void MSH_M7::setLogger(ILogger* l) {
     logger = l;
+}
+
+void MSH_M7::setSecurityManager(ISecurityManager* secM) {
     securityManager = secM;
-    printf("Menu Command Manager initialized successfully.\n");
 }
 
-void MenuCommandManager::registerCommand(const std::string& key, ICommand* command) {
-    commandMap[key] = command;
+void MSH_M7::initializeCommands() {
+    commands[0] = new GetModeCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[1] = new ChangeModeCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[2] = new GetStateCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[3] = new ChangeStateCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[4] = new PreviousStateCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[5] = new NextStateCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[6] = new GetDeviceByTypeCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[7] = new GetDeviceByIndexCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[8] = new RemoveDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[9] = new PoweronDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[10] = new PoweroffDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[11] = new AddDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands[12] = new ArmSecurityCommand(deviceManager, modeManager, stateManager, logger, securityManager);
 }
 
-bool MenuCommandManager::executeCommand(const std::string& key) {
-    std::map<std::string, ICommand*>::iterator it = commandMap.find(key);
-
-    if (it != commandMap.end()) {
-        it->second->execute(); // Bu �a�r� M7 komutlar�n� �al��t�r�r ve M8 verilerini g�nceller.
-        return true;
-    }
-    else {
-        std::cout << "ERROR: Unknown command '" << key << "'.\n";
-        return false;
-    }
-}
-
-void MenuCommandManager::displayMenu() const {
-    std::cout << "\n--- MSH MENU ---\n";
-    printf("[1] Get Home Status\n");
-    printf("[10] Shutdown\n");
-}
-
-// Singleton K�s�tlay�c�lar� (C2264 ��z�m�)
-MenuCommandManager::MenuCommandManager(const MenuCommandManager& other)
-    : deviceManager(0), modeManager(0), stateManager(0), logger(0), securityManager(0),
-    lastFoundDevice(0), lastFoundState(0), lastFoundModeName("")
-{
-}
-
-MenuCommandManager& MenuCommandManager::operator=(const MenuCommandManager& other) {
-    return *this;
+std::vector<ICommand*> MSH_M7::getCommands() {
+    return commands;
 }

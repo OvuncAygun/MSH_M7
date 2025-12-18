@@ -3,7 +3,7 @@
 
 #include "ICommand.h"
 
-class IPreviousStateCommand : public ICommand {
+class IPreviousStateCommand : public virtual ICommand {
 public:
     virtual ~IPreviousStateCommand() = 0;
 

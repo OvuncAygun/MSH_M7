@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-class IAddDeviceCommand : public ICommand {
+class IAddDeviceCommand : public virtual ICommand {
 public:
     virtual ~IAddDeviceCommand() = 0;
 

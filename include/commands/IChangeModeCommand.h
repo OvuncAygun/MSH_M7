@@ -4,11 +4,11 @@
 #include "ICommand.h"
 #include "IModeStrategy.h"
 
-class IChangeModeCommand : public ICommand {
+class IChangeModeCommand : public virtual ICommand {
 public:
     virtual ~IChangeModeCommand() = 0;
 
-    IModeStrategy* newMode;
+    IModeStrategy* mode;
 
     virtual void execute() = 0;
 };

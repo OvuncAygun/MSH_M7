@@ -7,25 +7,24 @@
 
 class ChangeStateCommand : public Command, public IChangeStateCommand {
 public:
-    ChangeStateCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM,
-        IState* state)
+    ChangeStateCommand(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
         : Command(dm, mm, sm, l, secM) {
     }
 
     ~ChangeStateCommand() {}
 
     void execute() {
-        if (newState == NULL) { // C++98 i�in NULL kontrol�
+        if (state == NULL) { // C++98 i�in NULL kontrol�
             printf("ERROR: New state is null!\n");
             return;
         }
 
-        printf("Executing ChangeState: Setting to %s\n", newState->getName().c_str());
+        printf("Executing ChangeState: Setting to %s\n", state->getName().c_str());
 
         // State Manager'a referans �zerinden aktar�m
-        stateManager->setState(*newState);
+        stateManager->setState(*state);
 
-        logger->writeLog("ChangeState", "New State: " + newState->getName());
+        logger->writeLog("ChangeState", "New State: " + state->getName());
     }
 };
 #endif 

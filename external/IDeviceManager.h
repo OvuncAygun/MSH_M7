@@ -23,10 +23,9 @@ public:
 
     virtual IDevice* getDeviceByIndex(int index) = 0;
 
-    virtual void removeDevice(DeviceType deviceType, int index) = 0;
+    virtual void removeDevice(IDevice* device) = 0;
 
-    virtual void powerOnDevice(DeviceType deviceType, int index) = 0;
+    virtual void powerOnDevice(IDevice* device) = 0;
     
-    virtual void powerOffDevice(DeviceType deviceType, int index) = 0;
-
+    virtual void powerOffDevice(IDevice* device) = 0;
 }; 

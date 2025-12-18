@@ -4,11 +4,11 @@
 #include "ICommand.h"
 #include "IState.h"
 
-class IChangeStateCommand : public ICommand {
+class IChangeStateCommand : public virtual ICommand {
 public:
     virtual ~IChangeStateCommand() = 0;
 
-    IState* newState; // M4'teki somut bir durum olmal�
+    IState* state;
 
     virtual void execute() = 0;
 };
