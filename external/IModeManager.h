@@ -4,7 +4,7 @@
 
 class IModeManager {
 public:
-    virtual ~IModeManager() = default;
+    virtual ~IModeManager() {}
 
     virtual void setMode(IModeStrategy* mode) = 0;
     virtual std::string getModeName() const = 0;

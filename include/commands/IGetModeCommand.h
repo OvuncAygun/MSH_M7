@@ -9,7 +9,7 @@ class IGetModeCommand : public virtual ICommand {
 public:
     virtual ~IGetModeCommand() {};
 
-    std::string modeName; // Mod�l 8'deki std::string de�i�keninin adresi
+    std::string modeName;
 
     virtual void execute() = 0;
 };

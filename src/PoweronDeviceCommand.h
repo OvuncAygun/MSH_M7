@@ -14,7 +14,7 @@ public:
 
     void execute() {
         printf("Executing PowerOn: Type %d, Index %d\n", device->getDeviceType(), device->getIndex());
-        deviceManager->powerOnDevice(device);
+        device->poweron();
         logger->writeLog("PowerOnDevice", "Type " + IntToString(static_cast<int>(device->getDeviceType())) + ", Index " + IntToString(device->getIndex()));
     }
 };

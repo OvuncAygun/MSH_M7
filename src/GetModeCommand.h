@@ -3,6 +3,7 @@
 
 #include "Command.h"
 #include "IGetModeCommand.h"
+#include "IModeStrategy.h"
 #include <string>
 
 class GetModeCommand : public Command, public IGetModeCommand {

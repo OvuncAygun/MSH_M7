@@ -21,8 +21,7 @@ public:
 
         printf("Executing ChangeState: Setting to %s\n", state->getName().c_str());
 
-
-        stateManager->setState(*state);
+        stateManager->setState(state);
 
         logger->writeLog("ChangeState", "New State: " + state->getName());
     }
