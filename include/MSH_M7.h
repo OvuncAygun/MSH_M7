@@ -7,10 +7,10 @@
 #include "../external/IStateManager.h"
 #include "../external/ILogger.h"
 #include "../external/ISecurityManager.h"
-#include "../external/IDevice.h" //
+#include "../external/IDevice.h" 
 #include <map>
 #include <string>
-#include <vector> //
+#include <vector> 
 #include <cstdio>
 
 class MenuCommandManager {
@@ -24,13 +24,13 @@ private:
     ILogger* logger;
     ISecurityManager* securityManager;
 
-    // --- Result Holders: Modül 7 komutlarýndan dönen veriler ---
-    IDevice* lastFoundDevice;       //
-    IState* lastFoundState;         //
-    std::string lastFoundModeName;  //
-    std::vector<IDevice*> lastDeviceList; //
+    // --- Result Holders: Module 7 commands data
+    IDevice* lastFoundDevice;       
+    IState* lastFoundState;         
+    std::string lastFoundModeName;  
+    std::vector<IDevice*> lastDeviceList; 
 
-    // HATA ÇÖZÜMÜ: Buradaki { } gövdesini sildik, sadece ; býraktýk.
+    // error delete { }, only ; 
     MenuCommandManager();
 
     ~MenuCommandManager();

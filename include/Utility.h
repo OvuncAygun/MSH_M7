@@ -4,10 +4,10 @@
 #include <string>
 #include <cstdio> 
 
-// 'inline' ekleyerek birden fazla .cpp dosyasýnda dahil edildiðinde çakýþmayý önlüyoruz.
+
 inline std::string IntToString(int value) {
     char buffer[20];
-    sprintf(buffer, "%d", value); //
+    sprintf(buffer, "%d", value); 
     return std::string(buffer);
 }
 

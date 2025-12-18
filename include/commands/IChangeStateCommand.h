@@ -8,7 +8,7 @@ class IChangeStateCommand : public ICommand {
 public:
     virtual ~IChangeStateCommand() = 0;
 
-    IState* newState; // M4'teki somut bir durum olmal�
+    IState* newState; // There is a concrete (somut) situation on the M4.
 
     virtual void execute() = 0;
 };

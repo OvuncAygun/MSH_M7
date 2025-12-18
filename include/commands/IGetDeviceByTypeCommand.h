@@ -11,7 +11,7 @@ public:
     virtual ~IGetDeviceByTypeCommand() = 0;
 
     DeviceType type;
-    std::vector<IDevice*>* listResult; // M8'deki listenin adresi
+    std::vector<IDevice*>* listResult; // The address of the list on M8
 
     virtual void execute() = 0;
 };

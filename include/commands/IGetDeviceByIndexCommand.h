@@ -9,7 +9,7 @@ public:
     virtual ~IGetDeviceByIndexCommand() = 0;
 
     int index;
-    IDevice** resultHolder; // Mod�l 8'deki IDevice* de�i�keninin adresi
+    IDevice** resultHolder; // The address of the IDevice* variable in Module 8.
 
     virtual void execute() = 0;
 };

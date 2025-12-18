@@ -15,14 +15,14 @@ public:
     ~ChangeStateCommand() {}
 
     void execute() {
-        if (newState == NULL) { // C++98 i�in NULL kontrol�
+        if (newState == NULL) { // for C++98 checking null
             printf("ERROR: New state is null!\n");
             return;
         }
 
         printf("Executing ChangeState: Setting to %s\n", newState->getName().c_str());
 
-        // State Manager'a referans �zerinden aktar�m
+
         stateManager->setState(*newState);
 
         logger->writeLog("ChangeState", "New State: " + newState->getName());

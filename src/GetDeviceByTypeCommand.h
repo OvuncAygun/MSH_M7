@@ -17,7 +17,6 @@ public:
     void execute() {
         printf("Executing GetDeviceByTypeCommand: Listing all devices of Type %d\n", type);
 
-        // IDeviceManager'dan bu t�rdeki t�m cihazlar� al�yoruz
         std::vector<IDevice*> devices = deviceManager->getDeviceByType(type);
 
         if (devices.empty()) {
@@ -25,7 +24,7 @@ public:
         }
         else {
             for (size_t i = 0; i < devices.size(); ++i) {
-                // Her cihaz�n ad�n� ve durumunu ekrana yazd�r�yoruz
+
                 printf(" - [%d] Name: %s, Power: %s\n",
                     devices[i]->getIndex(),
                     devices[i]->getName().c_str(),

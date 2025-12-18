@@ -6,11 +6,11 @@
 
 class IGetStateCommand : public ICommand {
 public:
-    // 1. BURAYA EKLE: Sanal Y�k�c� (Destructor)
-    // Bellek s�z�nt�lar�n� �nlemek i�in her komutun kendi sanal y�k�c�s� olmal�d�r.
+    // Virtual Destructor
+    // To prevent memory leaks, each instruction must have its own virtual unloader.
     virtual ~IGetStateCommand() = 0;
 
-    IState** stateResult; // M8'deki IState* adresi
+    IState** stateResult; // The IState* address is on M8.
 
     virtual void execute() = 0;
 };
