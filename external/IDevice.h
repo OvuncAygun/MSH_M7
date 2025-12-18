@@ -8,9 +8,7 @@
 class IDevice {
 public:
     
-    // Sanal Yýkýcý Düzeltmesi: Saf sanal olduðu için bir gövde saðlamalýyýz.
-    // Gövdeyi 'inline' olarak burada tanýmlýyoruz.
-    virtual ~IDevice() {} // ( = 0 kaldýrýldý)
+    virtual ~IDevice() {} // not ( = 0 )
 
     virtual std::string getName() = 0;
     virtual void setName(const std::string& name) = 0;

@@ -8,7 +8,8 @@
 
 class IDeviceManager {
 public:
-    // Sanal Y�k�c�: Saf sanal y�k�c�lar,.cpp dosyas�nda g�vde gerektirir.En temiz ��z�m, sadece sanal yapmakt�r.
+    // Virtual Destroyer: Pure virtual destroyers require a body in the .cpp file. 
+    // The cleanest solution is to make it virtual only.
     
     virtual ~IDeviceManager() {}
 

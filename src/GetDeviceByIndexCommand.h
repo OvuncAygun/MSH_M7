@@ -15,11 +15,9 @@ public:
     virtual void execute() {
         printf("Executing GetDeviceByIndexCommand: Looking up Index %d\n", index);
 
-        // IDeviceManager'dan indekse g�re cihaz� �ekiyoruz
         IDevice* device = deviceManager->getDeviceByIndex(index);
 
         if (device != NULL) {
-            // Cihaz�n detayl� bilgilerini yazd�r�yoruz
             printf("Device Found:\n");
             printf(" -> Name: %s\n", device->getName().c_str());
             printf(" -> Type: %d\n", device->getDeviceType());

@@ -9,12 +9,10 @@
 #include "ILogger.h"
 #include "ISecurityManager.h"
 #include "DeviceType.h"       
-#include "Utility.h" // yard�mc� fonksiyon
+#include "Utility.h" 
 
-// Command, t�m y�neticileri tutan soyut temel s�n�ft�r.
 class Command : public virtual ICommand {
 protected:
-    // T�m somut komutlar�n kullanaca�� y�neticiler
     IDeviceManager* deviceManager;
     IModeManager* modeManager;
     IStateManager* stateManager;
@@ -22,7 +20,7 @@ protected:
     ISecurityManager* securityManager;
 
 public:
-    // Kurucu: T�m 5 y�neticiyi al�r (C++98)
+
     Command(IDeviceManager* dm, IModeManager* mm, IStateManager* sm, ILogger* l, ISecurityManager* secM)
         : deviceManager(dm), modeManager(mm), stateManager(sm), logger(l), securityManager(secM) {
     }
