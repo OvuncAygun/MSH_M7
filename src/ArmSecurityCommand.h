@@ -14,9 +14,7 @@ public:
     ~ArmSecurityCommand() {}
 
     void execute() {
-     // This command activates the SecurityManager on M6.
         printf("Executing ArmSecurityCommand: Security system activated.\n");
-     // securityManager->armSystem(); The hypothetical method gave an error, so I changed it.
         securityManager->setIsSystemArmed(true);
         logger->writeLog("Security", "System Armed.");
     }
