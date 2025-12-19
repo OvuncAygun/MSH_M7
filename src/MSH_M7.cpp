@@ -37,19 +37,32 @@ void MSH_M7::setSecurityManager(ISecurityManager* secM) {
 }
 
 void MSH_M7::initializeCommands() {
-    commands[0] = new GetModeCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[1] = new ChangeModeCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[2] = new GetStateCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[3] = new ChangeStateCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[4] = new PreviousStateCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[5] = new NextStateCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[6] = new GetDeviceByTypeCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[7] = new GetDeviceByIndexCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[8] = new RemoveDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[9] = new PoweronDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[10] = new PoweroffDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[11] = new AddDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager);
-    commands[12] = new ArmSecurityCommand(deviceManager, modeManager, stateManager, logger, securityManager);
+    commands.push_back(
+        new GetModeCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new ChangeModeCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new GetStateCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new ChangeStateCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new PreviousStateCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new NextStateCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new GetDeviceByTypeCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new GetDeviceByIndexCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new RemoveDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new PoweronDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new PoweroffDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new AddDeviceCommand(deviceManager, modeManager, stateManager, logger, securityManager));
+    commands.push_back(
+        new ArmSecurityCommand(deviceManager, modeManager, stateManager, logger, securityManager));
 }
 
 std::vector<ICommand*> MSH_M7::getCommands() {
