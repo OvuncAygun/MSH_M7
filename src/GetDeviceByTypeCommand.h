@@ -16,7 +16,7 @@ public:
     void execute() {
         //printf("Executing GetDeviceByTypeCommand: Listing all devices of Type %d\n", type);
 
-        std::vector<IDevice*> devices = deviceManager->getDeviceByType(type);
+        devices = deviceManager->getDeviceByType(type);
 
         /*
         if (devices.empty()) {

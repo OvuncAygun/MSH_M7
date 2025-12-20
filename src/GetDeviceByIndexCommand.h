@@ -15,7 +15,7 @@ public:
     virtual void execute() {
         //printf("Executing GetDeviceByIndexCommand: Looking up Index %d\n", index);
 
-        IDevice* device = deviceManager->getDeviceByIndex(index);
+        device = deviceManager->getDeviceByIndex(index);
 
         /*
         if (device != NULL) {
