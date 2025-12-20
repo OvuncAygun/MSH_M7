@@ -13,7 +13,7 @@ public:
     ~PoweroffDeviceCommand() {}
 
     void execute() {
-        printf("Executing PowerOff: Type %d, Index %d\n", device->getDeviceType(), device->getIndex());
+        //printf("Executing PowerOff: Type %d, Index %d\n", device->getDeviceType(), device->getIndex());
         device->poweroff();
         logger->writeLog("PowerOffDevice", "Type " + IntToString(static_cast<int>(device->getDeviceType())) + ", Index " + IntToString(device->getIndex()));
     }

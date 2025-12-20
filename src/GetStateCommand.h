@@ -21,11 +21,11 @@ public:
         }
 
         if (currentState != 0) {
-            printf("Executing GetStateCommand: Current state is %s\n", currentState->getName().c_str());
+            //printf("Executing GetStateCommand: Current state is %s\n", currentState->getName().c_str());
             logger->writeLog("GetState", "Current State: " + currentState->getName());
         }
         else {
-            printf("Executing GetStateCommand: WARNING - Current state is NULL!\n");
+            //printf("Executing GetStateCommand: WARNING - Current state is NULL!\n");
             logger->writeLog("GetState", "Warning: Current state is null.");
         }
     }

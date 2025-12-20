@@ -12,7 +12,7 @@ public:
     ~ChangeModeCommand() {}
 
     void execute() {
-        printf("Executing ChangeMode: Setting to %s\n", mode->getModeName().c_str());
+        //printf("Executing ChangeMode: Setting to %s\n", mode->getModeName().c_str());
         modeManager->setMode(mode);
         logger->writeLog("ChangeMode", "New Mode: " + mode->getModeName());
     }

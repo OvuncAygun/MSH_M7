@@ -15,7 +15,7 @@ public:
 
     void execute() {
         
-        printf("Executing AddDevice: Type %d, Count %d\n", deviceCreationType, count);
+        //printf("Executing AddDevice: Type %d, Count %d\n", deviceCreationType, count);
        
         deviceManager->addDevice(deviceCreationType, name, config, count);
 

@@ -21,7 +21,7 @@ public:
             modeName = modeNameReturn;
         }
 
-        printf("Executing GetModeCommand: Current Mode is %s\n", modeName.c_str());
+        //printf("Executing GetModeCommand: Current Mode is %s\n", modeName.c_str());
 
         logger->writeLog("GetMode", "Current Mode: " + modeName);
     }

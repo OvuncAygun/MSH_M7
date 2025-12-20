@@ -19,7 +19,7 @@ public:
             return;
         }
 
-        printf("Executing ChangeState: Setting to %s\n", state->getName().c_str());
+        //printf("Executing ChangeState: Setting to %s\n", state->getName().c_str());
 
         stateManager->setState(state);
 

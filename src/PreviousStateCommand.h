@@ -13,7 +13,7 @@ public:
     ~PreviousStateCommand() {}
 
     void execute() {
-        printf("Executing PreviousStateCommand: Restoring previous state...\n");
+        //printf("Executing PreviousStateCommand: Restoring previous state...\n");
         stateManager->restorePrev();
         logger->writeLog("StateRestore", "Restored Previous State");
     }

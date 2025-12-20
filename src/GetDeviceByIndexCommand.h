@@ -13,10 +13,11 @@ public:
     virtual ~GetDeviceByIndexCommand() {}
 
     virtual void execute() {
-        printf("Executing GetDeviceByIndexCommand: Looking up Index %d\n", index);
+        //printf("Executing GetDeviceByIndexCommand: Looking up Index %d\n", index);
 
         IDevice* device = deviceManager->getDeviceByIndex(index);
 
+        /*
         if (device != NULL) {
             printf("Device Found:\n");
             printf(" -> Name: %s\n", device->getName().c_str());
@@ -27,6 +28,7 @@ public:
         else {
             printf("ERROR: Device at index %d not found!\n", index);
         }
+        */
 
         logger->writeLog("GetDeviceByIndex", "Fetched device at index " + IntToString(index));
     }

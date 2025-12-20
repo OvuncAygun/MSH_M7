@@ -14,10 +14,11 @@ public:
     ~GetDeviceByTypeCommand() {}
 
     void execute() {
-        printf("Executing GetDeviceByTypeCommand: Listing all devices of Type %d\n", type);
+        //printf("Executing GetDeviceByTypeCommand: Listing all devices of Type %d\n", type);
 
         std::vector<IDevice*> devices = deviceManager->getDeviceByType(type);
 
+        /*
         if (devices.empty()) {
             printf("No devices found for this type.\n");
         }
@@ -30,6 +31,7 @@ public:
                     devices[i]->getPowerState() ? "ON" : "OFF");
             }
         }
+        */
 
         logger->writeLog("GetDeviceByType", "Listed devices of type " + IntToString(type));
     }

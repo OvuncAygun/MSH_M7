@@ -14,7 +14,7 @@ public:
     ~ArmSecurityCommand() {}
 
     void execute() {
-        printf("Executing ArmSecurityCommand: Security system activated.\n");
+        //printf("Executing ArmSecurityCommand: Security system activated.\n");
         securityManager->setIsSystemArmed(true);
         logger->writeLog("Security", "System Armed.");
     }

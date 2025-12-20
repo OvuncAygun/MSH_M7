@@ -13,7 +13,7 @@ public:
     ~NextStateCommand() {}
 
     void execute() {
-        printf("Executing NextStateCommand: Restoring next state...\n");
+        //printf("Executing NextStateCommand: Restoring next state...\n");
         stateManager->restoreNext();
         logger->writeLog("StateRestore", "Restored Next State");
     }
