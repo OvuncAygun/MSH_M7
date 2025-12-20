@@ -30,7 +30,7 @@ target_sources(MSH_M7
         src/GetDeviceByTypeCommand.h
         src/GetDeviceByIndexCommand.h
         src/RemoveDeviceCommand.h
-        src/PowerOnDeviceCommand.h
+        src/PoweronDeviceCommand.h
         src/PoweroffDeviceCommand.h
         src/AddDeviceCommand.h
         src/ArmSecurityCommand.h
@@ -47,7 +47,7 @@ target_sources(MSH_M7
         ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/IGetDeviceByTypeCommand.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/IGetDeviceByIndexCommand.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/IRemoveDeviceCommand.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/IPowerOnDeviceCommand.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/IPoweronDeviceCommand.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/IPoweroffDeviceCommand.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/IAddDeviceCommand.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/commands/IArmSecurityCommand.h
