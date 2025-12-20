@@ -13,7 +13,7 @@ public:
     ~RemoveDeviceCommand() {}
 
     void execute() {
-        printf("Executing RemoveDevice: Type %d, Index %d\n", device->getDeviceType(), device->getIndex());
+        //printf("Executing RemoveDevice: Type %d, Index %d\n", device->getDeviceType(), device->getIndex());
         deviceManager->removeDevice(device);
         logger->writeLog("RemoveDevice", "Type " + IntToString(static_cast<int>(device->getDeviceType())) + ", Index " + IntToString(device->getIndex()));
     }
