@@ -16,7 +16,7 @@ public:
     void execute() {
         IState* currentState = stateManager->getCurrentState();
 
-        if (state != 0) {
+        if (currentState != 0) {
             state = currentState;
         }
 
