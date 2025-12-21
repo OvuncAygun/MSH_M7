@@ -11,7 +11,7 @@ public:
     virtual ~IGetDeviceByTypeCommand() {};
 
     DeviceType type;
-    std::vector<IDevice*> devices;
+    std::vector<IDevice*> devices;  
 
     virtual void execute() = 0;
 };
